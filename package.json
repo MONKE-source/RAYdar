@@ -1,0 +1,12 @@
+{
+  "name": "RAYdar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MONKE-source/RAYdar.git",
+  "author": "Ted, Arth, Vann Xyn, Zhe Hao, Kenzie",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
