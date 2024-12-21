@@ -8,5 +8,19 @@
     "48": "icon.png",
     "128": "icon.png"
   },
-  "action": { "default_title": "Click me", "default_popup": "./dist/popup.html" }
+  "action": {
+    "default_title": "Click me",
+    "default_popup": "./dist/popup.html"
+  },
+  "background": {
+    "service_worker": "./src/background/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./src/contentScript/contentScript.js"]
+    }
+  ],
+  "permissions": ["storage", "activeTab", "tabs", "bookmarks"],
+  "options_page": "./dist/options.html"
 }

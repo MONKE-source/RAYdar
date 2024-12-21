@@ -15,6 +15,16 @@
   "background": {
     "service_worker": "./src/background/background.js"
   },
-  "permissions": ["storage", "activeTab", "tabs"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*",
+        "https://web.telegram.org/k/*",
+        "https://discord.com/channels/*"
+      ],
+      "js": ["./src/contentScript/contentScript.js"]
+    }
+  ],
+  "permissions": ["storage", "activeTab", "tabs", "bookmarks"],
   "options_page": "./dist/options.html"
 }

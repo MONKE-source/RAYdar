@@ -8,6 +8,7 @@ module.exports = {
     popup: path.resolve("./src/popup/popup.tsx"),
     options: path.resolve("./src/options/options.tsx"),
     background: path.resolve("./src/background/background.js"),
+    contentScript: path.resolve("./src/contentScript/contentScript.js"),
   },
   devtool: "cheap-module-source-map",
   module: {

@@ -1,3 +1,7 @@
-chrome.runtime.onMessage.addListener(() => {
-  console.log("chrome extension installed");
+chrome.runtime.onInstalled.addListener(() => {
+  console.log("extension installed");
+});
+
+chrome.bookmarks.onCreated.addListener(() => {
+  console.log("extension bookmarked");
 });
