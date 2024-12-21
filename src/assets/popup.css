@@ -1,4 +1,85 @@
 body {
   height: 400px;
   width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.gauge {
+  width: 100%;
+  max-width: 250px;
+  font-size: 32px;
+  color: #004033;
+  margin-bottom: 20px;
+}
+
+.Header {
+  font-size: 25px;
+  color: #004033;
+  margin-bottom: 20px;
+}
+
+.gauge__body {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: #b4c0be;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
+}
+
+.gauge__fill {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background: #3491df;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: transform 0.5s ease-out;
+}
+
+.gauge__cover {
+  width: 75%;
+  height: 150%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+}
+
+.button {
+  height: 56px;
+  width: 150px;
+  font-size: 20px;
+  border: none;
+  border-radius: 16px;
+  background-color: #f7d3d3;
+  color: #3b3b3b;
+  cursor: pointer;
+  margin-left: 17px;
+}
+
+.button:hover {
+  border: solid;
+  border-color: #3b3b3b;
+  border-width: 2px;
+  background-color: #f7cbcb;
+  transition: 0.1s ease-out;
 }

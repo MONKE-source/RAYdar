@@ -1,19 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "../assets/popup.css"; // Import the CSS file
 
-const test = (
-  <div>
-    <h1>Hello World</h1>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet
-      orci vel neque tincidunt placerat sit amet nec ante. Vivamus blandit
-      faucibus fringilla.
-    </p>
-    <img src="icon.png" alt=""></img>
-  </div>
-);
+const Gauge = () => {
+
+  function addValue(){
+    const value = 0.2
+    return value
+  }
+  useEffect(() => {
+    const gaugeElement = document.querySelector(".gauge");
+
+    function setGaugeValue(gauge, value) {
+      if (value < 0 || value > 1) {
+        return;
+      }
+
+      gauge.querySelector(".gauge__fill").style.transform = `rotate(${value / 2}turn)`;
+      gauge.querySelector(".gauge__cover").textContent = `${Math.round(value * 100)}%`;
+    }
+
+    const value = addValue();
+
+    setGaugeValue(gaugeElement, value); // Example usage
+  }, []);
+
+  return (
+    <div>
+      <p class="Header">How offensive?</p>
+      <div className="gauge">
+        <div className="gauge__body">
+          <div className="gauge__fill"></div>
+          <div className="gauge__cover"></div>
+        </div>
+      </div>
+      <button class="button">Scan Now</button>
+    </div>
+    
+  );
+};
+
 const container = document.createElement("div");
 document.body.appendChild(container);
 const root = createRoot(container);
-root.render(test);
+root.render(<Gauge />);
