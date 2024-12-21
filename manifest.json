@@ -10,6 +10,10 @@
   },
   "action": {
     "default_title": "Click me",
-    "default_popup": "./dist/popup.html"
-  }
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "./src/background.js"
+  },
+  "options_page": "options.html"
 }
