@@ -1,7 +1,11 @@
 /******/ (() => { // webpackBootstrap
 /*!**************************************!*\
-  !*** ./src/background/background.ts ***!
+  !*** ./src/background/background.js ***!
   \**************************************/
+chrome.runtime.onMessage.addListener(() => {
+  console.log("chrome extension installed");
+});
 
 /******/ })()
 ;
+//# sourceMappingURL=background.js.map

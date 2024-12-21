@@ -1,0 +1,1 @@
+{"version":3,"file":"background.js","mappings":";;;;AAAA;AACA;AACA","sources":["webpack://RAYdar/./src/background/background.js"],"sourcesContent":["chrome.runtime.onMessage.addListener(() => {\n  console.log(\"chrome extension installed\");\n});\n"],"names":[],"sourceRoot":""}
