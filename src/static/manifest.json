@@ -8,8 +8,5 @@
     "48": "icon.png",
     "128": "icon.png"
   },
-  "action": {
-    "default_title": "Click me",
-    "default_popup": "./dist/popup.html"
-  }
+  "action": { "default_title": "Click me", "default_popup": "./dist/popup.html" }
 }
