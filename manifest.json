@@ -17,11 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://web.whatsapp.com/*",
-        "https://web.telegram.org/k/*",
-        "https://discord.com/channels/*"
-      ],
+      "matches": ["*://*/*"],
       "js": ["./src/contentScript/contentScript.js"]
     }
   ],

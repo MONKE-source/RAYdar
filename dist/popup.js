@@ -24,8 +24,110 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, `body {
   height: 400px;
   width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
-`, "",{"version":3,"sources":["webpack://./src/assets/popup.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,YAAY;AACd","sourcesContent":["body {\n  height: 400px;\n  width: 400px;\n}\n"],"sourceRoot":""}]);
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge {
+  width: 100%;
+  max-width: 250px;
+  font-size: 32px;
+  color: #004033;
+  margin-bottom: 20px;
+}
+
+.Header {
+  font-size: 25px;
+  color: #004033;
+  margin-bottom: 20px;
+}
+
+.gauge__body {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  background: #b4c0be;
+  position: relative;
+  border-top-left-radius: 100% 200%;
+  border-top-right-radius: 100% 200%;
+  overflow: hidden;
+}
+
+.gauge__fill {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: inherit;
+  height: 100%;
+  background: #3491df;
+  transform-origin: center top;
+  transform: rotate(0.25turn);
+  transition: transform 0.5s ease-out;
+}
+
+.gauge__cover {
+  width: 75%;
+  height: 150%;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%;
+  box-sizing: border-box;
+}
+
+.button {
+  height: 56px;
+  width: 150px;
+  font-size: 20px;
+  border: none;
+  border-radius: 16px;
+  background-color: #f7d3d3;
+  color: #3b3b3b;
+  cursor: pointer;
+  margin-left: 17px;
+}
+
+.button:hover {
+  border: solid;
+  border-color: #3b3b3b;
+  border-width: 2px;
+  background-color: #f7cbcb;
+  transition: 0.1s ease-out;
+}
+
+.text-input {
+  height: 40px;
+  width: 250px;
+  font-size: 18px;
+  border: 1px solid #b4c0be;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.text-input:focus {
+  border-color: #3491df;
+  outline: none;
+}
+`, "",{"version":3,"sources":["webpack://./src/assets/popup.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,YAAY;EACZ,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,iCAAiC;EACjC,SAAS;AACX;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;AACrB;;AAEA;EACE,WAAW;EACX,gBAAgB;EAChB,eAAe;EACf,cAAc;EACd,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,cAAc;EACd,mBAAmB;AACrB;;AAEA;EACE,WAAW;EACX,SAAS;EACT,mBAAmB;EACnB,mBAAmB;EACnB,kBAAkB;EAClB,iCAAiC;EACjC,kCAAkC;EAClC,gBAAgB;AAClB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,OAAO;EACP,cAAc;EACd,YAAY;EACZ,mBAAmB;EACnB,4BAA4B;EAC5B,2BAA2B;EAC3B,mCAAmC;AACrC;;AAEA;EACE,UAAU;EACV,YAAY;EACZ,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,2BAA2B;;EAE3B,SAAS;EACT,aAAa;EACb,mBAAmB;EACnB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,YAAY;EACZ,mBAAmB;EACnB,yBAAyB;EACzB,cAAc;EACd,eAAe;EACf,iBAAiB;AACnB;;AAEA;EACE,aAAa;EACb,qBAAqB;EACrB,iBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;AAC3B;;AAEA;EACE,YAAY;EACZ,YAAY;EACZ,eAAe;EACf,yBAAyB;EACzB,kBAAkB;EAClB,eAAe;EACf,mBAAmB;EACnB,sBAAsB;AACxB;;AAEA;EACE,qBAAqB;EACrB,aAAa;AACf","sourcesContent":["body {\n  height: 400px;\n  width: 400px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  font-family: \"Roboto\", sans-serif;\n  margin: 0;\n}\n\n.container {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.gauge {\n  width: 100%;\n  max-width: 250px;\n  font-size: 32px;\n  color: #004033;\n  margin-bottom: 20px;\n}\n\n.Header {\n  font-size: 25px;\n  color: #004033;\n  margin-bottom: 20px;\n}\n\n.gauge__body {\n  width: 100%;\n  height: 0;\n  padding-bottom: 50%;\n  background: #b4c0be;\n  position: relative;\n  border-top-left-radius: 100% 200%;\n  border-top-right-radius: 100% 200%;\n  overflow: hidden;\n}\n\n.gauge__fill {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  width: inherit;\n  height: 100%;\n  background: #3491df;\n  transform-origin: center top;\n  transform: rotate(0.25turn);\n  transition: transform 0.5s ease-out;\n}\n\n.gauge__cover {\n  width: 75%;\n  height: 150%;\n  background: #ffffff;\n  border-radius: 50%;\n  position: absolute;\n  top: 25%;\n  left: 50%;\n  transform: translateX(-50%);\n\n  /* Text */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding-bottom: 25%;\n  box-sizing: border-box;\n}\n\n.button {\n  height: 56px;\n  width: 150px;\n  font-size: 20px;\n  border: none;\n  border-radius: 16px;\n  background-color: #f7d3d3;\n  color: #3b3b3b;\n  cursor: pointer;\n  margin-left: 17px;\n}\n\n.button:hover {\n  border: solid;\n  border-color: #3b3b3b;\n  border-width: 2px;\n  background-color: #f7cbcb;\n  transition: 0.1s ease-out;\n}\n\n.text-input {\n  height: 40px;\n  width: 250px;\n  font-size: 18px;\n  border: 1px solid #b4c0be;\n  border-radius: 8px;\n  padding: 0 10px;\n  margin-bottom: 20px;\n  box-sizing: border-box;\n}\n\n.text-input:focus {\n  border-color: #3491df;\n  outline: none;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -97,15 +199,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_popup_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/popup.css */ "./src/assets/popup.css");
 
 
- // Import the CSS file
-const test = (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hello World"),
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet orci vel neque tincidunt placerat sit amet nec ante. Vivamus blandit faucibus fringilla."),
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", { src: "icon.png", alt: "" })));
+ // Ensure the CSS file exists and is correctly styled.
+const Gauge = () => {
+    const [value, setValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0); // Tracks the gauge value
+    const textInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null); // Ref for the input field
+    // Updates the gauge visuals
+    const setGaugeValue = (gauge, value) => {
+        if (!gauge)
+            return;
+        if (value < 0 || value > 1) {
+            console.warn("Gauge value out of bounds:", value);
+            return;
+        }
+        gauge.querySelector(".gauge__fill").style.transform = `rotate(${value / 2}turn)`;
+        gauge.querySelector(".gauge__cover").textContent = `${Math.round(value * 100)}%`;
+    };
+    // Fetches the hate-o-meter value based on the input text
+    const getPagePercentage = () => {
+        var _a;
+        const articleText = ((_a = textInputRef.current) === null || _a === void 0 ? void 0 : _a.value) || "";
+        if (!articleText.trim()) {
+            alert("Please enter some text to analyze.");
+            return;
+        }
+        fetch("http://127.0.0.1:5000/submit-text", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ text: articleText }),
+        })
+            .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+            .then((text) => {
+            try {
+                const data = JSON.parse(text); // Attempt to parse as JSON
+                console.log("Prediction:", data);
+                alert("Prediction: " + data);
+                const normalizedValue = Math.min(Math.max(data, 0), 1); // Ensure value is within bounds
+                setValue(normalizedValue);
+            }
+            catch (jsonError) {
+                console.error("Error parsing JSON:", jsonError);
+                // Attempt to extract the value from plain text
+                const match = text.match(/Hate-o-meter:\s*([\d.]+)/);
+                if (match) {
+                    const hateOMeterValue = parseFloat(match[1]);
+                    const normalizedValue = Math.min(Math.max(hateOMeterValue, 0), 1);
+                    console.log("Hate-o-meter value:", normalizedValue);
+                    setValue(normalizedValue);
+                }
+                else {
+                    console.error("Hate-o-meter value not found in the response.");
+                    alert("Could not determine the hate-o-meter value.");
+                }
+            }
+        })
+            .catch((error) => {
+            console.error("Error during fetch:", error);
+            alert("An error occurred while fetching the data.");
+        });
+    };
+    // Effect to handle gauge updates and messaging
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+        const gaugeElement = document.querySelector(".gauge");
+        const port = chrome.runtime.connect({ name: "popup" });
+        port.onMessage.addListener((message) => {
+            if (message.type === "ARTICLE_TEXT_VALUE") {
+                const newValue = parseFloat(message.text);
+                console.log("Message received: ARTICLE_TEXT_VALUE", newValue);
+                setValue(newValue);
+                setGaugeValue(gaugeElement, newValue);
+            }
+        });
+        // Initial gauge value setup
+        setGaugeValue(gaugeElement, value);
+        return () => {
+            port.disconnect(); // Cleanup connection on component unmount
+        };
+    }, [value]);
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container" },
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: "Header" }, "How offensive?"),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "gauge" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "gauge__body" },
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "gauge__fill" }),
+                react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "gauge__cover" }))),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { type: "text", className: "text-input", placeholder: "Enter text here", ref: textInputRef }),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { className: "button", onClick: getPagePercentage }, "Scan Now")));
+};
+// Render the Gauge component
 const container = document.createElement("div");
 document.body.appendChild(container);
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-root.render(test);
+root.render(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Gauge, null));
 
 
 /***/ })

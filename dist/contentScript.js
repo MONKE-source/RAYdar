@@ -2,9 +2,59 @@
 /*!********************************************!*\
   !*** ./src/contentScript/contentScript.js ***!
   \********************************************/
+let result = 0;
 let typedText = "";
 let typingTimer;
-const typingDelay = 2000; // 2 seconds delay
+let typingTimer2;
+const typingDelay = 1500; // 2 seconds delay
+const typingDelay2 = 3000; // 3 seconds delay
+
+function getPagePercentage() {
+  const articleText = document.body.innerText;
+  console.log("Article text:", articleText);
+  fetch("http://127.0.0.1:5000/submit-text", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      text: articleText,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      console.log("Response:", response);
+      alert("Response: " + response);
+      return response.text();
+    })
+    .then((text) => {
+      try {
+        // Try to parse text as JSON
+        const data = JSON.parse(text);
+        console.log("Prediction:", data);
+        alert("Prediction: " + data);
+      } catch (jsonError) {
+        // If JSON parsing fails, try to extract the number from HTML
+        console.error("Error parsing JSON:", jsonError);
+        console.error("Response text:", text); // Log the response text for debugging
+
+        const match = text.match(/Hate-o-meter:\s*([\d.]+)/);
+        if (match) {
+          const hateOMeterValue = parseFloat(match[1]);
+          console.log("Hate-o-meter value:", hateOMeterValue);
+          alert("Hate-o-meter value: " + hateOMeterValue);
+          return hateOMeterValue.toFixed(2);
+        } else {
+          console.error("Hate-o-meter value not found in the response.");
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 // Function to handle keydown events
 function handleKeydownEvent(event) {
@@ -22,18 +72,46 @@ function handleKeydownEvent(event) {
 
   // Set a new timer
   typingTimer = setTimeout(() => {
-    alert("Finished typing: " + typedText);
-    fetch("http://your-server-url/predict", {
+    fetch("http://127.0.0.1:5000/submit-text", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: JSON.stringify({ input: typedText }),
+      body: new URLSearchParams({
+        text: typedText,
+      }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Prediction:", data.prediction);
-        alert("Prediction: " + data.prediction);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log("Response:", response);
+        return response.text();
+      })
+      .then((text) => {
+        try {
+          // Try to parse text as JSON
+          const data = JSON.parse(text);
+          console.log("Prediction:", data);
+          alert("Prediction: " + data);
+        } catch (jsonError) {
+          // If JSON parsing fails, try to extract the number from HTML
+          console.error("Error parsing JSON:", jsonError);
+          console.error("Response text:", text); // Log the response text for debugging
+
+          const match = text.match(/Hate-o-meter:\s*([\d.]+)/);
+          if (match) {
+            const hateOMeterValue = parseFloat(match[1]);
+            console.log("Hate-o-meter value:", hateOMeterValue);
+            if (hateOMeterValue > 0.6) {
+              alert(
+                "Offensive message! Please refrain from using such language."
+              );
+            }
+          } else {
+            console.error("Hate-o-meter value not found in the response.");
+          }
+        }
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -44,6 +122,20 @@ function handleKeydownEvent(event) {
 
 // Add event listener to the document to capture all key presses
 document.addEventListener("keydown", handleKeydownEvent);
+window.onload = () => {
+  try {
+    const result = getPagePercentage();
+    clearTimeout(typingTimer2);
+    typingTimer2 = setTimeout(() => {
+      console.log("Result:", result);
+      alert("Result: " + result);
+      chrome.runtime.sendMessage({ type: "ARTICLE_TEXT_VALUE", text: result });
+      console.log("Message sent: ARTICLE_TEXT_VALUE", result);
+    }, typingDelay2);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
 
 /******/ })()
 ;
