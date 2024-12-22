@@ -26,7 +26,7 @@ function getPagePercentage() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       console.log("Response:", response);
-      alert("Response: " + response);
+      alert("Response: " + response.text());
       return response.text();
     })
     .then((text) => {
@@ -34,7 +34,6 @@ function getPagePercentage() {
         // Try to parse text as JSON
         const data = JSON.parse(text);
         console.log("Prediction:", data);
-        alert("Prediction: " + data);
       } catch (jsonError) {
         // If JSON parsing fails, try to extract the number from HTML
         console.error("Error parsing JSON:", jsonError);
@@ -93,7 +92,6 @@ function handleKeydownEvent(event) {
           // Try to parse text as JSON
           const data = JSON.parse(text);
           console.log("Prediction:", data);
-          alert("Prediction: " + data);
         } catch (jsonError) {
           // If JSON parsing fails, try to extract the number from HTML
           console.error("Error parsing JSON:", jsonError);
@@ -103,7 +101,7 @@ function handleKeydownEvent(event) {
           if (match) {
             const hateOMeterValue = parseFloat(match[1]);
             console.log("Hate-o-meter value:", hateOMeterValue);
-            if (hateOMeterValue > 0.6) {
+            if (hateOMeterValue >= 0.6) {
               alert(
                 "Offensive message! Please refrain from using such language."
               );
@@ -122,20 +120,6 @@ function handleKeydownEvent(event) {
 
 // Add event listener to the document to capture all key presses
 document.addEventListener("keydown", handleKeydownEvent);
-window.onload = () => {
-  try {
-    const result = getPagePercentage();
-    clearTimeout(typingTimer2);
-    typingTimer2 = setTimeout(() => {
-      console.log("Result:", result);
-      alert("Result: " + result);
-      chrome.runtime.sendMessage({ type: "ARTICLE_TEXT_VALUE", text: result });
-      console.log("Message sent: ARTICLE_TEXT_VALUE", result);
-    }, typingDelay2);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
 
 /******/ })()
 ;

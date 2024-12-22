@@ -72,26 +72,12 @@ const Gauge = () => {
       });
   };
 
-  // Effect to handle gauge updates and messaging
+  // Effect to handle gauge updates
   useEffect(() => {
     const gaugeElement = document.querySelector(".gauge");
 
-    const port = chrome.runtime.connect({ name: "popup" });
-    port.onMessage.addListener((message) => {
-      if (message.type === "ARTICLE_TEXT_VALUE") {
-        const newValue = parseFloat(message.text);
-        console.log("Message received: ARTICLE_TEXT_VALUE", newValue);
-        setValue(newValue);
-        setGaugeValue(gaugeElement, newValue);
-      }
-    });
-
     // Initial gauge value setup
     setGaugeValue(gaugeElement, value);
-
-    return () => {
-      port.disconnect(); // Cleanup connection on component unmount
-    };
   }, [value]);
 
   return (

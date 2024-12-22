@@ -264,23 +264,11 @@ const Gauge = () => {
             alert("An error occurred while fetching the data.");
         });
     };
-    // Effect to handle gauge updates and messaging
+    // Effect to handle gauge updates
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
         const gaugeElement = document.querySelector(".gauge");
-        const port = chrome.runtime.connect({ name: "popup" });
-        port.onMessage.addListener((message) => {
-            if (message.type === "ARTICLE_TEXT_VALUE") {
-                const newValue = parseFloat(message.text);
-                console.log("Message received: ARTICLE_TEXT_VALUE", newValue);
-                setValue(newValue);
-                setGaugeValue(gaugeElement, newValue);
-            }
-        });
         // Initial gauge value setup
         setGaugeValue(gaugeElement, value);
-        return () => {
-            port.disconnect(); // Cleanup connection on component unmount
-        };
     }, [value]);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "container" },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: "Header" }, "How offensive?"),
